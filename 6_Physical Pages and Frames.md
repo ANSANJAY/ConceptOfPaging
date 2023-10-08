@@ -1,4 +1,4 @@
-# 129. Physical Pages and Frames 📚 🧠
+# Physical Pages and Frames 📚 🧠
 
 - **Physical Memory:** 
   - It refers to the Random Access Memory (RAM) in a computer system. 
