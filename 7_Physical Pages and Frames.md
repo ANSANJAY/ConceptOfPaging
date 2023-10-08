@@ -44,3 +44,36 @@ Think of physical memory (RAM) like a big bookshelf 📚. Each shelf (frame) is 
 Now, let's imagine you have many books (data) that you want to read (process). But since our bookshelf (RAM) can only hold a few books (data) at a time, we take pictures 📸 (physical pages) of the pages of the books (data) we want to read (process) later and store these pictures somewhere accessible (disk). When we want to read (process) the stored pages, we can just retrieve the pictures and place them on a shelf in our bookshelf.
 
 This way, by swapping pictures (physical pages) in and out of the bookshelf (RAM/frames), we can manage to read (process) more books (data) than our bookshelf (RAM) could hold at once! 📚➡️📸➡️🔄.
+
+---
+
+# Explaination  Physical Memory, Physical Frame, and Physical Page 📚 🧠
+
+
+
+Let's imagine the physical memory (RAM) as a big storage shelf, the frames as individual storage bins on that shelf, and the physical pages as the actual content (data) we store in those bins.
+
+```lua
++---------------------------------------------------------------+
+|                          Physical Memory                       |
+|                                                               |
+|    +------+     +------+     +------+     +------+     +------+   
+|    |Frame |     |Frame |     |Frame |     |Frame |     |Frame | 
+|    |  1   |     |  2   |     |  3   |     |  4   |     |  5   |  
+|    +------+     +------+     +------+     +------+     +------+    
+|      ||           ||           ||           ||           ||
+|      \/           \/           \/           \/           \/     
+|    +------+     +------+     +------+     +------+     +------+ 
+|    |Physical|   |Physical|   |Physical|   |Physical|   |Physical| 
+|    | Page  |   | Page  |   | Page  |   | Page  |   | Page  | 
+|    |  1   |   |  2   |   |  3   |   |  4   |   |  5   | 
+|    +------+     +------+     +------+     +------+     +------+ 
++---------------------------------------------------------------+
+```
+- **Physical Memory**: It's the entire storage shelf. In our example, it's divided into 5 individual storage bins (though real RAM would have many, many more).
+
+- **Frames**: These are the individual storage bins labeled "Frame 1", "Frame 2", etc. They each hold a certain amount of data. If each frame represents, for instance, 4KB of memory, that is the maximum amount of data they can store.
+
+- **Physical Pages**: Represented below the arrows, these are the actual snapshots of data stored within each frame. "Physical Page 1", "Physical Page 2", etc., represent chunks of data that are stored in the frames above them. In a real system, the OS controls the swapping of pages in and out of frames to ensure that the processor always has access to the data it needs.
+
+To further illustrate, if data from Physical Page 2 is requested but isn't currently in a frame (perhaps it was swapped out for other data), the operating system will perform a page swap, bringing the needed data back into a frame while moving other data out to ensure the processor can access it quickly and efficiently.
