@@ -2,9 +2,9 @@
 
 - **Logical and Physical Addresses**: The CPU generates logical addresses, while the Memory Management Unit (MMU) converts these logical addresses into physical addresses. An example given was the logical address 156 being converted to the physical address 56 by the MMU.
 
-- **Address Bus**: This connects the MMU and physical memory, with 32 metallic wires (in a 32-bit system). These wires can convey an address by varying voltage levels to represent binary encoding (e.g., 56 represented in binary).
+- **Address Bus**: This connects the MMU and physical memory, with `32 metallic wires `(in a 32-bit system). These wires can convey an address by varying voltage levels to represent binary encoding (e.g., 56 represented in binary).
 
-- **Data Bus**: This facilitates data transfer between the CPU and physical memory. In a 32-bit system, there are four buses (bus zero to bus three) with eight metallic wires each, allowing the data bus to carry 32 bits or four bytes of data in one go.
+- **Data Bus**: This facilitates data transfer between the CPU and physical memory. In a `32-bit system`, there are four buses (bus zero to bus three) with eight metallic wires each, allowing the data bus to `carry 32 bits` or four bytes of data in one go.
 
 - **Read/Write Operations**: Once a memory location is identified via the address bus, the CPU conducts read/write operations on the physical memory locations through the data bus.
 
