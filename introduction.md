@@ -9,10 +9,13 @@
      - Multiple processes can reuse the same physical memory address to store its data, although only one process can use it at a time.
 
 2. **Memory Illusion:**
-   - The memory illusion is when every executing process believes that it has a large contiguous block of memory available for its use (e.g., 2^32 bytes). The OS uses paging to manage the actual physical memory behind the scenes.
+   - The memory illusion is when `every executing process believes that it has a large contiguous block of memory available for its use (e.g., 2^32 bytes)`. 
+   
+   - The OS uses paging to manage the actual physical memory behind the scenes.
 
 3. **Memory Management Unit (MMU):**
-   - Paging is implemented by a specialized hardware called the Memory Management Unit (MMU). It plays a pivotal role in managing the translations and access between virtual and physical memory addresses.
+   - Paging is implemented by a specialized hardware called the `Memory Management Unit (MMU)`. 
+   - It plays a pivotal role in managing the `translations and access between virtual and physical memory addresses`.
 
 4. **Non-contiguous Memory Allocation:**
    - This means that a process's data is not stored in sequential physical memory addresses but is scattered across available memory spaces. It mitigates the issues that can arise from contiguous memory allocation, such as fragmentation.
