@@ -21,7 +21,7 @@
 
 ---
 
-#### # Curiosity 🧐
+ # Curiosity 🧐
 
 1. **Q:** What factors might influence the chosen size of a memory frame and why might 4KB be considered optimal in many cases?
    **A:** The size of a memory frame can be influenced by factors like page table size, disk I/O, and memory management overhead. 4KB is often chosen because it offers a balance, keeping the page table size manageable while also facilitating efficient disk I/O and minimizing the overhead associated with managing many small pages or the wastage associated with managing fewer, larger pages.
@@ -37,7 +37,7 @@
 
 ---
 
-#### # Concepts in Simple Words 🗣
+# Concepts in Simple Words 🗣
 
 Think of physical memory (RAM) like a big bookshelf 📚. Each shelf (frame) is designed to hold a specific size of books (data) neatly, which in our case is a 4KB size book. The entire bookshelf might have a huge capacity (like 4GB), but each shelf can only hold one book at a time.
 
