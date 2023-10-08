@@ -1,6 +1,4 @@
-### Title: 125. Bus System
-
-## 📘 Concepts
+# Bus System 📘
 
 ### What is a Bus?
 - A **bus** is essentially a system composed of hard metal wires, facilitating the transfer of data between various devices.
@@ -16,9 +14,9 @@
 - Buses are tangible and can be seen on motherboards as numerous metallic wires connecting various components/devices.
 - These buses or metallic wires permit the exchange of data by forming an interconnected network across the devices on the motherboard.
 
-## 🚀 Curiosity
+# 🚀 Curiosity
 
-### Technical Interview Questions:
+
 
 1. **Data Transfer via Bus:**
    - Q: How does a bus manage to transfer data using electrical signals?
