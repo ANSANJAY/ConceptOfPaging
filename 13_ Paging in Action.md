@@ -67,35 +67,40 @@
 
 In essence, the process thinks it has a nice and simple set of memory all to itself, but in reality, its memory might be scattered all over the place in the physical RAM. Paging helps manage and track all of this to keep things running smoothly without the programs needing to know about it!
 
-# diagram illustrating the paging in action with virtual address space, page table, and physical memory space:
-
 
 ```sql
-Virtual Address    |    Page Table    |    Physical Memory
-Space              |                  |    Space
-|------------------|    |----------|    |-------------------|
-| Virtual Address  |----|  Page 0  |----|  Frame 3          |
-|   9 (1001)       |    |----------|    |-------------------|
-|------------------|    |  Page 1  |----|  Frame 5          |
-|                  |    |----------|    |-------------------|
-|    . . .         |    |  Page 2  |----|  Frame 1          |
-|                  |    |----------|    |-------------------|
-|                  |    |  Page 3  |----|  Frame 6          |
-|------------------|    |----------|    |-------------------|
-                       |          . . .          |
-                       |----------|    |          . . .      |
-                                      |-------------------|
++------------------+      +-------------------+       +-----------------+
+| Virtual Address  |      | Page Table        |       | Physical Memory |
+| 9 (1001)         |----->| Index | Frame No. |------>| Frame | Content |
+| Split as:        |      |-------|-----------|       |-------|---------|
+| [VP: 10] [OF: 01]|      |   0   |     4     |       |   0   |   ...   |
+| VP: Virtual Page |      |   1   |     5     |       |   1   |   ...   |
+| OF: Offset       |      |   2   |     1     |       |   2   |   ...   |
+| Binary to Decimal|      |   3   |     6     |       |   3   |   ...   |
+| 10 -> 2, 01 -> 1 |      +-------------------+       |   4   |   ...   |
++------------------+                                 |   5   |   ...   |
+                                                    |   6   |   ...   |
+                                                    |   7   |   ...   |
+                                                    +-----------------+
 ```
 
-Explanation:
-- **Virtual Address Space**: Here we have an example of a virtual address, 9, which in binary is represented as 1001. The virtual address space might contain more addresses which are not shown in the diagram (`...`) to keep it simple.
-  
-- **Page Table**: Represents the mapping from virtual pages to physical frames. The specific mapping details are not shown in the diagram, but in an actual system, each entry in the page table will contain information about which frame in physical memory corresponds to a particular page in the virtual address space.
+#### Step-by-step Calculation
 
-- **Physical Memory Space**: It is partitioned into frames, which store the data. Just as in the virtual address space, only a few frames are shown for simplicity. Data would be read from or written to the specified frame when a program accesses the corresponding virtual page.
+1. **Virtual Address**:
+   - Given: `9`
+   - Binary: `1001`
+   - Split: VP (Virtual Page) = `10` and OF (Offset) = `01`
+   - Decimal: VP = `2` and OF = `1`
 
-In the context of the example given: The virtual address `9` or `1001` in binary will be split into two parts according to the paging logic: `[10][01]`. 
-- The first part `10` (2 in decimal) indicates that we’re looking at the virtual page 2.
-- The second part `01` (1 in decimal) indicates that, within the page/frame, we're interested in the second byte (counting starts at zero).
+2. **Lookup in Page Table**:
+   - With VP = `2`, we look up the Page Table at index `2`
+   - Page Table[2] shows Frame Number = `1`
 
-Assuming a simple mapping where `Page 2` maps to `Frame 1` (just for illustration, this is not given in your provided information), a program attempting to access virtual address `9` would be directed to the second byte in `Frame 1` of the physical memory. This example demonstrates how paging can be visualized and how address translation might occur from a virtual address through a page table to a physical memory address.
+3. **Physical Memory Calculation**:
+   - Given the frame number from the page table (Frame `1`), we calculate the physical memory location.
+   - Each frame starts at address `[frame number] * [frame size]`. Assuming a frame size of `4` bytes, Frame `1` starts at address `1 * 4 = 4`.
+   - Adding the offset (OF = `1`), we get `4 + 1 = 5`.
+   
+Therefore, virtual address `9` maps to physical address `5` through this paging mechanism. CPU generates the virtual address, which is split into a virtual page and offset. The page table maps the virtual page to a physical frame, and the offset gives the exact byte within that frame. This mechanism allows efficiently mapping a process's virtual address space to physical memory in a non-contiguous manner.
+
+Note: In practice, page tables may reside in memory and have additional layers (multi-level paging) to handle larger address spaces efficiently. Also, there's typically involvement from the Memory Management Unit (MMU) to assist with the virtual-to-physical address translation.
